@@ -1,10 +1,8 @@
 import { ClerkProvider } from '@clerk/clerk-react';
 
 const AuthWrapper = ({ children }) => {
-  const publishableKey = import.meta.env.REACT_APP_CLERK_PUBLISHABLE_KEY;
-
   return (
-    <ClerkProvider publishableKey={publishableKey}>
+    <ClerkProvider publishableKey={import.meta.env.VITE_CLERK_PUBLISHABLE_KEY}>
       {children}
     </ClerkProvider>
   );
