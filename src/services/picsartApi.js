@@ -8,7 +8,7 @@
  */
 export const upscaleImage = async (imageFile, scaleFactor = 2, format = 'JPG') => {
   // Use environment variable or fallback to hardcoded key for testing
-  const apiKey = import.meta.env.VITE_PICSART_API_KEY || 'eyJraWQiOiI5NzIxYmUzNi1iMjcwLTQ5ZDUtOTc1Ni05ZDU5N2M4NmIwNTEiLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJhdXRoLXNlcnZpY2UtNTBjNzRiYWMtM2I4MS00Y2Q4LTljYWYtNzM0MGYzMGIwZmU4IiwiYXVkIjoiNDc4OTA5NDQxMDA0MTAxIiwibmJmIjoxNzQ4OTMzNjIzLCJzY29wZSI6WyJiMmItYXBpLmdlbl9haSIsImIyYi1hcGkuaW1hZ2VfYXBpIl0sImlzcyI6Imh0dHBzOi8vYXBpLnBpY3NhcnQuY29tL3Rva2VuLXNlcnZpY2UiLCJvd25lcklkIjoiNDc4OTA5NDQxMDA0MTAxIiwiaWF0IjoxNzQ4OTMzNjIzLCJqdGkiOiI3NTYyM2NmYS0yNDkzLTQzYmMtOTE1NS00YTFhOTJlOGFiMTAifQ.ShjddyCvD4ahC5eiLqnHLjHpSbw1orjrsb36xICP8X_jekRpNGjzVVAdNhf9ovfgdxrlr76-g4hJ9yKj-mPJmGkJTxUqFfQ_eGwFK2nNrkCsHOwejTFomux_-MoN9FtzJEEHNi5o5RuDXJ4hqB-D4KdafSqRjRCKOF7pD7Di7JmgArF6alY8QQuLSE-Q3NoGFZWNBn5-7wAy_GhPNmlCipJMKN8Vm731m6BRi4x883T0rZVMRA5yxpxFo6AQkMExduC40-KRa8xFiuXYC-vzHX_dYIZH631nmGfnmj4rhqLZBIN-CSyL2ht5RjyqC3JjvzsP2gHU9C72tSKWhS9mBA';
+  const apiKey = import.meta.env.VITE_PICSART_API_KEY;
 
   const formData = new FormData();
   formData.append('image', imageFile);
