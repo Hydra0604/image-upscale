@@ -8,43 +8,22 @@ export default function Navbar({ onUploadClick }) {
 
   return (
     <nav className="flex items-center justify-between border-b px-10 py-4 bg-white shadow-sm w-full">
-      <div className="flex items-center gap-3 text-lg font-bold">
+      <a href="/" className="flex items-center gap-3 text-lg font-bold hover:text-blue-600">
         <svg className="w-5 h-5 text-blue-600" viewBox="0 0 48 48" fill="currentColor">
           <path d="M24 4H6V17.3333V30.6667H24V44H42V30.6667V17.3333H24V4Z" />
         </svg>
         ImageEnhance
-      </div>
+      </a>
       <div className="flex items-center gap-6">
-        <Link 
-          to="features" 
-          spy={true} 
-          smooth={true} 
-          offset={-60} 
-          duration={500}
-          className="text-sm text-gray-700 hover:text-blue-600"
-        >
+        <a href="/features" className="text-sm text-gray-700 hover:text-blue-600">
           Features
-        </Link>
-        <Link 
-          to="pricing" 
-          spy={true} 
-          smooth={true} 
-          offset={-60} 
-          duration={500}
-          className="text-sm text-gray-700 hover:text-blue-600"
-        >
+        </a>
+        <a href="/pricing" className="text-sm text-gray-700 hover:text-blue-600">
           Pricing
-        </Link>
-        <Link 
-          to="support" 
-          spy={true} 
-          smooth={true} 
-          offset={-60} 
-          duration={500}
-          className="text-sm text-gray-700 hover:text-blue-600"
-        >
+        </a>
+        <a href="/support" className="text-sm text-gray-700 hover:text-blue-600">
           Support
-        </Link>
+        </a>
         <button 
           className="bg-blue-600 text-white px-4 py-2 cursor-pointer rounded-lg text-sm font-bold hover:bg-blue-700"
           onClick={onUploadClick}

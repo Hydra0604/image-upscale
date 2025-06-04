@@ -55,7 +55,10 @@ const ImageUploader = ({ onImageSelect, fileInputRef }) => {
     <div className="w-full flex items-center justify-center px-4">
       <div
         className="flex flex-col items-center justify-center text-center bg-cover bg-center bg-no-repeat rounded-lg w-full max-w-5xl min-h-[400px] p-6 relative overflow-hidden"
-        style={{ backgroundImage: `url(${uploadedImage || '/background.png'})` }}
+        style={{
+          backgroundImage: `url(${uploadedImage || '/background.png'})`,
+          userSelect: 'none'
+        }}
         onDrop={handleDrop}
         onDragOver={handleDragOver}
       >
