@@ -2,13 +2,15 @@
 import './assets/styles/App.css';
 import './assets/styles/Components.css';
 import Home from './pages/Home';
-import './assets/styles/App.css';
+import AuthWrapper from './components/AuthWrapper';
 
 function App() {
   return (
-    <div className="app">
-      <Home />
-    </div>
+    <AuthWrapper>
+      <div className="app">
+        <Home />
+      </div>
+    </AuthWrapper>
   );
 }
 

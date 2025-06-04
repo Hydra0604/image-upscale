@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const ImageUploader = ({ onImageSelect }) => {
+const ImageUploader = ({ onImageSelect, fileInputRef }) => {
   const [uploadedImage, setUploadedImage] = useState(null);
   const [error, setError] = useState(null);
 
@@ -61,10 +61,10 @@ const ImageUploader = ({ onImageSelect }) => {
       >
         {!uploadedImage ? (
           <div className="p-8 w-full max-w-2xl z-10">
-            <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-4">
+            <h1 className="text-3xl md:text-5xl font-bold text-white mb-4">
               Enhance Your Images with AI
             </h1>
-            <p className="text-gray-600 mb-6">
+            <p className="text-white mb-6">
               Transform your photos with our advanced AI technology. Improve clarity, color, and detail with just one click.
             </p>
             <label className="bg-blue-600 text-white font-medium px-6 py-3 rounded-lg cursor-pointer hover:bg-blue-700 transition">
@@ -74,6 +74,7 @@ const ImageUploader = ({ onImageSelect }) => {
                 accept="image/*"
                 onChange={handleFileChange}
                 className="hidden"
+                ref={fileInputRef}
               />
             </label>
             {error && (

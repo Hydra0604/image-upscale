@@ -8,17 +8,22 @@ import Footer from '../components/Footer';
 import BeforeAfter from '../components/BeforeAfter';
 import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
-
+import { useUser } from '@clerk/clerk-react';
+import { SignInButton, SignOutButton } from '@clerk/clerk-react';
+import { ScrollWrapper, Element } from '../components/ScrollWrapper';
 
 import '../assets/styles/App.css';
 import '../assets/styles/Components.css';
 
-const Home = () => {
+export default function Home() {
   const [preview, setPreview] = useState(null);
   const [upscaledImage, setUpscaledImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState('');
+  const { user } = useUser();
+  const isPremium = user?.isPremium || false;
   const [scale, setScale] = useState(2);
+  const [fileInputRef, setFileInputRef] = useState(null);
 
   const handleUpscale = async () => {
     if (!preview) return;
@@ -48,49 +53,64 @@ const Home = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
-      <Navbar />
-      <main className="flex-grow">
-        {/* Hero Section (Uploader with background) */}
-        
-        <div className="w-full max-w-4xl mx-auto px-4 py-8">
-          {upscaledImage ? (
-            <ResultViewer original={preview} upscaled={upscaledImage} />
-          ) : (
-            <>
-              <ImageUploader
-                onImageSelect={(img) => {
-                  setPreview(img);
-                  setUpscaledImage(null);
-                }}
-              />
-              
-              {error && (
-                <div className="error-message bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
-                  {error}
-                </div>
-              )}
+    <ScrollWrapper>
+      <div className="flex flex-col min-h-screen bg-gray-50">
+        <Navbar onUploadClick={() => fileInputRef?.current?.click()} />
+        <main className="flex-grow">
+          <div className="w-full max-w-4xl mx-auto px-4 py-8">
+             <Element name="features" className="section">
+               {upscaledImage ? (
+                 <ResultViewer original={preview} upscaled={upscaledImage} />
+               ) : (
+                 <>
+                   <ImageUploader
+                     onImageSelect={(img) => {
+                       setPreview(img);
+                       setUpscaledImage(null);
+                     }}
+                     fileInputRef={fileInputRef}
+                   />
+                   
+                   {error && (
+                     <div className="error-message bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                       {error}
+                     </div>
+                   )}
 
-              {preview && (
-                <UpscaleControls
-                  onUpscale={handleUpscale}
-                  scale={scale}
-                  setScale={setScale}
-                  isLoading={isLoading}
-                />
-              )}
-            </>
-          )}
-        <BeforeAfter />
-        <HowItWorks />
-        <Testimonials />
-        </div>
-
-      </main>
-
-      <Footer />
-    </div>
+                   {preview && (
+                     <div className="flex flex-col gap-4">
+                       <UpscaleControls
+                      onUpscale={handleUpscale}
+                      scale={scale}
+                      setScale={(newScale) => {
+                        if (newScale > 2 && !user) {
+                          setError('4x upscale is available for signed-in users only. Please sign in to access this feature.');
+                          return;
+                        }
+                        setScale(newScale);
+                      }}
+                      isLoading={isLoading}
+                      isPremium={isPremium}
+                      user={user}
+                    />
+                     </div>
+                   )}
+                 </>
+               )}
+             </Element>
+            <Element name="before-after" className="section">
+              <BeforeAfter />
+            </Element>
+            <Element name="how-it-works" className="section">
+              <HowItWorks />
+            </Element>
+            <Element name="testimonials" className="section">
+              <Testimonials />
+            </Element>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    </ScrollWrapper>
   );
-};
-
-export default Home;
+}

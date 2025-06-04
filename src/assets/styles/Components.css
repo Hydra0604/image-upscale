@@ -27,10 +27,17 @@
     margin: 1rem 0;
   }
   
-  .controls-container select {
+  .controls-container select,
+.scale-select {
     padding: 0.5rem;
     border-radius: 5px;
     border: 1px solid #ddd;
+    cursor: pointer;
+    background-color: white;
+    color: #333;
+    font-size: 1rem;
+    min-width: 120px;
+    transition: all 0.3s ease;
   }
   
   .controls-container button {
