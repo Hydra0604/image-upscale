@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import BeforeAfter from '../components/BeforeAfter';
 import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
+import Reviews from '../components/Reviews';
 import { useUser } from '@clerk/clerk-react';
 import { SignInButton, SignOutButton } from '@clerk/clerk-react';
 import { ScrollWrapper, Element } from '../components/ScrollWrapper';
