@@ -26,6 +26,8 @@ export default function Home() {
   const [scale, setScale] = useState(2);
   const [fileInputRef, setFileInputRef] = useState(null);
 
+
+
   const handleUpscale = async () => {
     if (!preview) return;
 
@@ -99,15 +101,15 @@ export default function Home() {
                  </>
                )}
              </Element>
-            <Element name="before-after" className="section">
-              <BeforeAfter />
-            </Element>
-            <Element name="how-it-works" className="section">
-              <HowItWorks />
-            </Element>
-            <Element name="testimonials" className="section">
-              <Testimonials />
-            </Element>
+             <Element name="before-after" className="section">
+               <BeforeAfter />
+             </Element>
+             <Element name="how-it-works" className="section">
+               <HowItWorks />
+             </Element>
+             <Element name="testimonials" className="section">
+               <Testimonials />
+             </Element>
           </div>
         </main>
         <Footer />
@@ -115,3 +117,4 @@ export default function Home() {
     </ScrollWrapper>
   );
 }
+       
